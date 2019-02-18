@@ -1,4 +1,3 @@
-ppc64le/buildsystem/Buildtools-third_party-libc++-trunk-include-thread-PPC.patch
 ppc64le/buildsystem/0006-build-toolchain-allow-clang-on-ppc64.patch
 ppc64le/breakpad/0001-Implement-ppc64-support-on-linux.patch
 ppc64le/crashpad/0001-Implement-support-for-PPC64-on-Linux.patch
