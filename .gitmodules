@@ -1,3 +1,0 @@
-[submodule "patches/chromium_power"]
-	path = patches/chromium_power
-	url = https://github.com/leo-lb/chromium_power
