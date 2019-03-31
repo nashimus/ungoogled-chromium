@@ -1,8 +1,4 @@
 chromium_power/breakpad/0001-Implement-ppc64-support-on-linux.patch
-chromium_power/build_toolchain/0001-build-download_nacl_toolchains.py-Honor-disable_nacl.patch
-chromium_power/build_toolchain/0006-build-toolchain-allow-clang-on-ppc64.patch
-chromium_power/build_toolchain/Binutils-download.py-PPC.patch
-chromium_power/build_toolchain/Src-DEPS.patch
 chromium_power/crashpad/0001-Implement-support-for-PPC64-on-Linux.patch
 chromium_power/crashpad/0002-Include-cstddef-to-fix-build.patch
 chromium_power/database/0001-Properly-detect-little-endian-PPC64-systems.patch
