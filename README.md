@@ -1,8 +1,8 @@
 # ungoogled-chromium
 
-*Bringing back the "Don't" in "Don't be evil"*
+*A lightweight approach to removing Google web service dependency*
 
-**ungoogled-chromium is Google Chromium**, sans integration with Google. It also features some tweaks to enhance privacy, control, and transparency *(almost all of which require manual activation or enabling)*.
+**ungoogled-chromium is Google Chromium**, sans dependency on Google web services. It also features some tweaks to enhance privacy, control, and transparency *(almost all of which require manual activation or enabling)*.
 
 **ungoogled-chromium retains the default Chromium experience as closely as possible**. Unlike other Chromium forks that have their own visions of a web browser, ungoogled-chromium is essentially a drop-in replacement for Chromium.
 
@@ -25,15 +25,16 @@
 
 ## Motivation and Philosophy
 
-A number of features or background services communicate with Google servers despite the absence of an associated Google account or compiled-in Google API keys. Furthermore, the normal build process for Chromium involves running Google's own high-level commands that invoke many scripts and utilities, some of which download and use pre-built binaries provided by Google. Even the final build output includes some pre-built binaries. Fortunately, the source code is available for everything.
+Without signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of inner operations.
 
-From a technical standpoint, ungoogled-chromium is a set of configuration flags, patches, and custom scripts. These components altogether strive to accomplish the following:
+ungoogled-chromium addresses these issues in the following ways:
 
-* Disable or remove offending services and features that communicate with Google or weaken privacy
-* Strip binaries from the source tree, and use those provided by the system or build them from source
-* Disable features that inhibit control and transparency, and add or modify features that promote them (these changes will almost always require manual activation or enabling).
+1. Remove all remaining background requests to any web services while building and running the browser
+2. Remove all code specific to Google web services
+3. Remove all uses of pre-made binaries from the source code, and replace them with user-provided alternatives when possible.
+4. Disable features that inhibit control and transparency, and add or modify features that promote them (these changes will almost always require manual activation or enabling).
 
-Since these goals and requirements are not precise, unclear situations are discussed and decided on a case-by-case basis.
+These features are implemented as configuration flags, patches, and custom scripts. For more details, consult the [Design Documentation](docs/design.md).
 
 ## Feature Overview
 
@@ -86,9 +87,9 @@ In addition to the features introduced by ungoogled-chromium, ungoogled-chromium
 
 ### Supported Platforms and Distributions
 
-Currently, only desktop platforms are supported. Functionality of specific desktop platforms may vary across different releases. For more details, see [Statuses in the Wiki](//ungoogled-software.github.io/ungoogled-chromium-wiki/statuses).
+[See docs/platforms.md for a list of supported platforms](docs/platforms.md).
 
-Other platforms are discussed and tracked in GitHub's Issue Tracker. Learn more about using the Issue Tracker under the section [Contributing, Reporting, Contacting](#contributing-reporting-contacting).
+Other platforms are discussed and tracked in this repository's Issue Tracker. Learn more about using the Issue Tracker under the section [Contributing, Reporting, Contacting](#contributing-reporting-contacting).
 
 ## Downloads
 
@@ -106,28 +107,27 @@ To build ungoogled-chromium, see [Source Code](#source-code).
 * Arch Linux: [Available in AUR as `ungoogled-chromium`](https://aur.archlinux.org/packages/ungoogled-chromium/)
     * NOTE: `ungoogled-chromium-bin` is *not* officially part of ungoogled-chromium. Please submit all issues to the maintainer of the PKGBUILD.
 * Gentoo Linux: [`::chaoslab`](https://gitlab.com/chaoslab/chaoslab-overlay) overlay maintains an *unofficial*  [`ungoogled-chromium`](https://gitlab.com/chaoslab/chaoslab-overlay/tree/master/www-client/ungoogled-chromium) ebuild.
+* GNU Guix: Available as `ungoogled-chromium`.
 * macOS cask: Available as `eloston-chromium`
 
 ### Contributor Binaries
 
 *Download, install, and run ungoogled-chromium from machine code provided by volunteers.*
 
+[**Download from here**](//ungoogled-software.github.io/ungoogled-chromium-binaries/)
+
 **IMPORTANT**: These binaries are provided by anyone who are willing to build and submit them. Because these binaries are not necessarily [reproducible](https://reproducible-builds.org/), authenticity cannot be guaranteed; In other words, there is always a non-zero probability that these binaries may have been tampered with. In the unlikely event that this has happened to you, please [report it in a new issue](#contributing-reporting-contacting).
 
-[**Download from the contributor binaries website**](//ungoogled-software.github.io/ungoogled-chromium-binaries/)
-
-The release versioning scheme follows that of the tags. Please see [Getting the source code](#getting-the-source-code) section for more details.
-
-**To contribute binaries**, [consult the instructions in the ungoogled-chromium-binaries repository](//github.com/ungoogled-software/ungoogled-chromium-binaries)
+To contribute binaries, [consult the instructions in the ungoogled-chromium-binaries repository](//github.com/ungoogled-software/ungoogled-chromium-binaries)
 
 ### Source Code
 
-**Picking the version to download**: You are encouraged to download [one of the tags](//github.com/Eloston/ungoogled-chromium/tags). The latest tag may not be the applicable for all platforms. To determine the tag to use, please see the [Status page in the Wiki](https://ungoogled-software.github.io/ungoogled-chromium-wiki/statuses). Tags are versioned in the following format: `{chromium_version}-{release_revision}` where
+This repository contains the common code for all platforms. To build ungoogled-chromium for a specific platform, [consult the repository for that plaform](docs/platforms.md).
+
+[Tags (listed here)](//github.com/Eloston/ungoogled-chromium/tags) denote versions ready to be used. Tags follow the format `{chromium_version}-{revision}` where
 
 * `chromium_version` is the version of Chromium used in `x.x.x.x` format, and
-* `release_revision` is a number indicating the version of ungoogled-chromium for the corresponding Chromium version.
-
-Not all tags are stable for all platforms. See the [Statuses in the Wiki](//ungoogled-software.github.io/ungoogled-chromium-wiki/statuses) to determine the tag to use.
+* `revision` is a number indicating the version of ungoogled-chromium for the corresponding Chromium version.
 
 **Building the source code**: [See docs/building.md](docs/building.md)
 

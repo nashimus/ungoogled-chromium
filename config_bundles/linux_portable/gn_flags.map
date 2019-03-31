@@ -1,4 +1,0 @@
-custom_toolchain="//build/toolchain/linux/unbundle:default"
-host_toolchain="//build/toolchain/linux/unbundle:default"
-linux_use_bundled_binutils=false
-use_kerberos=false
