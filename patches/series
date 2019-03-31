@@ -5,7 +5,6 @@ chromium_power/database/0001-Properly-detect-little-endian-PPC64-systems.patch
 chromium_power/ffmpeg/0001-Add-support-for-ppc64.patch
 chromium_power/libaom/0001-Add-ppc64-target-to-libaom.patch
 chromium_power/libaom/0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
-chromium_power/lss/0001-WIP-ppc64-support.patch
 chromium_power/page_allocator/0001-base-allocator-Use-64k-page-sizes-on-ppc64.patch
 chromium_power/pdfium/0001-Add-spin-yield-support-for-ppc64.patch
 chromium_power/pdfium/0001-pdfium-allocator-Use-64k-page-sizes-on-ppc64.patch
