@@ -24,7 +24,9 @@ PATH="${PWD}/ninja:${PWD}/gn/out:${PATH}"
 
 git clone git://github.com/ninja-build/ninja.git
 cd ninja
-git checkout release
+# git checkout release
+git checkout b25c08bda4949192c69cea4cee057887341a2ffc
+
 ./configure.py --bootstrap
 
 cd ../
@@ -36,6 +38,8 @@ export CXX=g++
 export AR=ar
 
 cd gn
+git checkout 091169beda92aff21ded3e9dfb392ea12b10c0e0
+
 python build/gen.py --no-sysroot
 sed s/-stdlib=libstdc++//g -i out/build.ninja
 ninja -C out
