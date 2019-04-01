@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo "#####################"
+echo "IT IS RECOMMENDED TO RUN THIS BUILD SCRIPT ON UBUNTU BIONIC!"
+echo "#####################"
 echo "If any error occurs, please refer to https://wiki.raptorcs.com/wiki/Porting/Chromium for missing dependencies or others."
 echo "#####################"
 
