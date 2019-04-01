@@ -48,6 +48,7 @@ unset CXX
 unset CC
 unset AR
 
+cd ../
 cd src
 
 cd third_party/libvpx
@@ -58,7 +59,7 @@ cd ../../
 cd third_party/ffmpeg
 ./chromium/scripts/build_ffmpeg.py linux ppc64
 ./chromium/scripts/generate_gn.py
-./chromium/scripts/copy_config.sh 
+./chromium/scripts/copy_config.sh
 cd ../../
 
 cd ../
