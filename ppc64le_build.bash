@@ -64,7 +64,7 @@ cd ../../
 
 cd ../
 
-REVISION=$(grep -Po "(?<=CLANG_REVISION = ')\d+(?=')" tools/clang/scripts/update.py)
+REVISION=$(grep -Po "(?<=CLANG_REVISION = ')\d+(?=')" src/tools/clang/scripts/update.py)
 
 svn checkout --force "https://llvm.org/svn/llvm-project/llvm/trunk@$REVISION" llvm
 svn checkout --force "https://llvm.org/svn/llvm-project/cfe/trunk@$REVISION" llvm/tools/clang
