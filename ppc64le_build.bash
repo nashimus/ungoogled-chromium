@@ -20,7 +20,7 @@ mkdir -p build/download_cache
 
 cd build
 
-PATH="${HOME}/ninja:$HOME/gn/out:${PATH}"
+PATH="${PWD}/ninja:${PWD}/gn/out:${PATH}"
 
 git clone git://github.com/ninja-build/ninja.git
 cd ninja
