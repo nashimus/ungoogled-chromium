@@ -72,6 +72,9 @@ svn checkout --force "https://llvm.org/svn/llvm-project/compiler-rt/trunk@$REVIS
 
 mkdir llvm_build
 cd llvm_build
+
+LLVM_BUILD_DIR=$(pwd)
+
 cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Unix Makefiles" ../llvm
 make -j$(nproc)
 
@@ -80,6 +83,9 @@ cd src
 
 mkdir -p out/Default
 cp ../../flags.gn out/Default/args.gn
+
+sed "s#../llvm_build#${LLVM_BUILD_DIR}#g" -i out/Default/args.gn
+
 ./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
 
 ./out/Default/gn gen out/Default --fail-on-unused-args
