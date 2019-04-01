@@ -79,7 +79,7 @@ cd ../
 cd src
 
 mkdir -p out/Default
-cp flags.gn out/Default/args.gn
+cp ../../flags.gn out/Default/args.gn
 ./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
 
 ./out/Default/gn gen out/Default --fail-on-unused-args
