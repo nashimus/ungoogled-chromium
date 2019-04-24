@@ -34,4 +34,4 @@ use_unofficial_version_number=false
 is_clang=true
 clang_base_path="../llvm_build"
 use_lld=false
-
+enable_dav1d_decoder=false
