@@ -8,6 +8,8 @@
 
 4. `./ppc64le_build.bash`
 
+### /!\ You must remove the build folder before running the build script again.
+
 # ungoogled-chromium
 
 *A lightweight approach to removing Google web service dependency*
