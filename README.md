@@ -1,3 +1,9 @@
+# Prebuilt releases
+
+They may not be always up to date but I try to update as I can, I need them for my own personal use so that gives you some sort of guarantee :).
+
+https://github.com/leo-lb/ungoogled-chromium/releases
+
 # How to build for ppc64le
 
 1. Create an Ubuntu Bionic build environment
