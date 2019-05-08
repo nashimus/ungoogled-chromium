@@ -20,7 +20,7 @@ mkdir -p build/download_cache
 
 cd build
 
-PATH="${PWD}/ninja:${PWD}/gn/out:${PATH}"
+PATH="${PWD}/ninja:${PATH}"
 
 git clone git://github.com/ninja-build/ninja.git
 cd ninja
@@ -53,6 +53,7 @@ cd src
 
 mkdir -p out/Default
 ./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
+PATH="${PWD}/out/Default:${PATH}"
 
 cd third_party/libvpx
 mkdir source/config/linux/ppc64
