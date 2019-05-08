@@ -6,7 +6,7 @@ build:
     - docker
     - ppc64le
   script:
-    - "apt update && apt install -y build-essential git tar bzip2 vim cmake python libcups2-dev pkg-config libnss3-dev libssl-dev libglib2.0-dev libgnome-keyring-dev libpango1.0-dev libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev libgtk-3-dev libkrb5-dev libpulse-dev libxss-dev re2c subversion curl libasound2-dev libpci-dev mesa-common-dev gperf bison nodejs uuid-dev clang-format libatspi2.0-dev"
+    - "export DEBIAN_FRONTEND=noninteractive && apt -yq update && apt install -yq build-essential git tar bzip2 vim cmake python libcups2-dev pkg-config libnss3-dev libssl-dev libglib2.0-dev libgnome-keyring-dev libpango1.0-dev libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev libgtk-3-dev libkrb5-dev libpulse-dev libxss-dev re2c subversion curl libasound2-dev libpci-dev mesa-common-dev gperf bison nodejs uuid-dev clang-format libatspi2.0-dev"
     - "./ppc64le_build.bash"
     - "cd build/src/out/Default && tar ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2 -cvjSf --exclude=obj *"
   artifacts:
