@@ -8,7 +8,7 @@ https://github.com/leo-lb/ungoogled-chromium/releases
 
 1. Create an Ubuntu Bionic build environment
 
-2. `sudo apt install -y build-essential git vim cmake python libcups2-dev pkg-config libnss3-dev libssl-dev libglib2.0-dev libgnome-keyring-dev libpango1.0-dev libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev libgtk-3-dev libkrb5-dev libpulse-dev libxss-dev re2c subversion curl libasound2-dev libpci-dev mesa-common-dev gperf bison nodejs uuid-dev clang-format libatspi2.0-dev`
+2. `sudo apt install -y build-essential clang git vim cmake python libcups2-dev pkg-config libnss3-dev libssl-dev libglib2.0-dev libgnome-keyring-dev libpango1.0-dev libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev libgtk-3-dev libkrb5-dev libpulse-dev libxss-dev re2c subversion curl libasound2-dev libpci-dev mesa-common-dev gperf bison nodejs uuid-dev clang-format libatspi2.0-dev`
 
 3. `git clone https://github.com/leo-lb/ungoogled-chromium ungoogled-chromium-ppc64le && cd ungoogled-chromium-ppc64le && git submodule update --init`
 
