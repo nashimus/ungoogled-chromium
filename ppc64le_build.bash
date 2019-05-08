@@ -51,6 +51,8 @@ cd ../
 #cd ../
 cd src
 
+./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
+
 cd third_party/libvpx
 mkdir source/config/linux/ppc64
 ./generate_gni.sh
@@ -85,8 +87,6 @@ mkdir -p out/Default
 cp ../../flags.gn out/Default/args.gn
 
 sed "s#../llvm_build#${LLVM_BUILD_DIR}#g" -i out/Default/args.gn
-
-./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
 
 ./out/Default/gn gen out/Default --fail-on-unused-args
 ninja -C out/Default chrome chrome_sandbox
