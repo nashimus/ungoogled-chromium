@@ -51,6 +51,7 @@ cd ../
 #cd ../
 cd src
 
+mkdir -p out/Default
 ./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
 
 cd third_party/libvpx
@@ -83,7 +84,6 @@ make -j$(nproc)
 cd ../
 cd src
 
-mkdir -p out/Default
 cp ../../flags.gn out/Default/args.gn
 
 sed "s#../llvm_build#${LLVM_BUILD_DIR}#g" -i out/Default/args.gn
