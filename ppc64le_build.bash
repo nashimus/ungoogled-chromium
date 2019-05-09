@@ -55,7 +55,7 @@ svn checkout --force "https://llvm.org/svn/llvm-project/llvm/trunk@$REVISION" ll
 svn checkout --force "https://llvm.org/svn/llvm-project/cfe/trunk@$REVISION" llvm/tools/clang
 svn checkout --force "https://llvm.org/svn/llvm-project/compiler-rt/trunk@$REVISION" llvm/compiler-rt
 
-mkdir llvm_build
+mkdir -p llvm_build
 cd llvm_build
 
 LLVM_BUILD_DIR=$(pwd)
