@@ -1,8 +1,8 @@
 # Prebuilt releases
 
-They may not be always up to date but I try to update as I can, I need them for my own personal use so that gives you some sort of guarantee :).
+Get prebuilt releases from Gitlab CI at https://gitlab.com/lle-bout/ungoogled-chromium/pipelines
 
-https://github.com/leo-lb/ungoogled-chromium/releases
+Look for "Download build artifacts" on the latest successful pipeline.
 
 # How to build for ppc64le
 
