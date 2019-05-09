@@ -9,7 +9,7 @@ build:
     - ppc64le
   script:
     - "./ppc64le_build.bash"
-    - "cd build/src/out/Default && tar ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2 -cvjSf --exclude=obj *"
+    - "cd build/src/out/Default && tar --exclude=obj -cvjSf ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2 *"
   artifacts:
     paths:
       - "build/src/out/Default/ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2"
