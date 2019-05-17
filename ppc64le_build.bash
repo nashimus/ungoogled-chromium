@@ -33,7 +33,7 @@ cd ../
 cd src
 
 mkdir -p out/Default
-./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j4 -o out/Default/gn
+./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j$(nproc) -o out/Default/gn
 PATH="${PWD}/out/Default:${PATH}"
 
 cd third_party/libvpx
