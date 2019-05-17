@@ -15,6 +15,4 @@ build:
       - "build/src/out/Default/ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2"
   cache:
     paths:
-      - "build/src/out/Default/*"
-      - "build/llvm_build/*"
       - "build/download_cache/*"

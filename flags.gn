@@ -35,3 +35,5 @@ is_clang=true
 clang_base_path="../llvm_build"
 use_lld=false
 enable_dav1d_decoder=false
+use_jumbo_build=true
+jumbo_file_merge_limit=8
