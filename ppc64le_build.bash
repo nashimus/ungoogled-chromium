@@ -18,19 +18,7 @@ mkdir -p build/download_cache
 
 ./utils/domain_substitution.py apply -r domain_regex.list -f domain_substitution.list -c build/domsubcache.tar.gz build/src
 
-cd build
-
-PATH="${PWD}/ninja:${PATH}"
-
-git clone git://github.com/ninja-build/ninja.git
-cd ninja
-git checkout release
-# git checkout b25c08bda4949192c69cea4cee057887341a2ffc
-
-./configure.py --bootstrap
-
-cd ../
-cd src
+cd build/src
 
 mkdir -p out/Default
 ./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j$(nproc) -o out/Default/gn
