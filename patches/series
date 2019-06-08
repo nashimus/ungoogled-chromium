@@ -26,7 +26,6 @@ chromium_power/third_party/0001-third_party-libvpx-Properly-generate-gni-on-ppc6
 chromium_power/third_party/0001-third_party-lss-Don-t-look-for-mmap2-on-ppc64.patch
 chromium_power/third_party/0001-xf86drm.c-Fix-build-on-newer-glibc.patch
 chromium_power/third_party/0002-third_party-closure_compiler-Remove-useless-JVM-flag.patch
-chromium_power/update_client/0001-components-update_client-Fix-building-on-ppc64.patch
 chromium_power/v8/0001-DONTMERGE-Disable-v8-unit-tests.patch
 chromium_power/webrtc/Buildtools-third_party-libc++-trunk-include-thread-PPC.patch
 chromium_power/webrtc/Modules-desktop_capture-differ_block.cc-PPC.patch
