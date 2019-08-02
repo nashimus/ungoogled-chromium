@@ -39,15 +39,15 @@ cd ../
 
 REVISION=$(grep -Po "(?<=CLANG_REVISION = ')\w+(?=')" src/tools/clang/scripts/update.py)
 
-git clone https://github.com/llvm/llvm-project.git llvm
-git -C llvm checkout "${REVISION}"
+git clone https://github.com/llvm/llvm-project.git
+git -C llvm-project checkout "${REVISION}"
 
 mkdir -p llvm_build
 cd llvm_build
 
 LLVM_BUILD_DIR=$(pwd)
 
-cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=clang -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Unix Makefiles" ../llvm
+cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=clang -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Unix Makefiles" ../llvm-project/llvm
 make -j$(nproc)
 
 cd ../
