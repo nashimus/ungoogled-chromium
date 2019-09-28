@@ -1,3 +1,5 @@
+chromium-77-std-string.patch
+
 chromium_power/breakpad/0001-Implement-ppc64-support-on-linux.patch
 chromium_power/crashpad/0001-Implement-support-for-PPC64-on-Linux.patch
 chromium_power/crashpad/0002-Include-cstddef-to-fix-build.patch
