@@ -35,4 +35,5 @@ fatal_linker_warnings=false
 is_debug=false
 is_official_build=true
 symbol_level=0
-proprietary_codecs=false
+proprietary_codecs=true
+ffmpeg_branding="Chrome"
