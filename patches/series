@@ -1,3 +1,4 @@
+Yarn.patch
 llvm-bug-workaround.patch
 
 chromium_power/breakpad/0001-Implement-ppc64-support-on-linux.patch
