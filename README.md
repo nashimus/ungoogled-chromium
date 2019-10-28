@@ -8,7 +8,7 @@ Look for "Download build artifacts" on the latest successful pipeline.
 
 1. Create an Ubuntu Bionic build environment
 
-2. `sudo apt install -y build-essential ninja-build clang git vim cmake python libcups2-dev pkg-config libnss3-dev libssl-dev libglib2.0-dev libgnome-keyring-dev libpango1.0-dev libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev libgtk-3-dev libkrb5-dev libpulse-dev libxss-dev re2c subversion curl libasound2-dev libpci-dev mesa-common-dev gperf bison nodejs uuid-dev clang-format libatspi2.0-dev`
+2. `sudo apt install -y build-essential ninja-build clang git vim cmake python libcups2-dev pkg-config libnss3-dev libssl-dev libglib2.0-dev libgnome-keyring-dev libpango1.0-dev libdbus-1-dev libatk1.0-dev libatk-bridge2.0-dev libgtk-3-dev libkrb5-dev libpulse-dev libxss-dev re2c subversion curl libasound2-dev libpci-dev mesa-common-dev gperf bison nodejs uuid-dev clang-format libatspi2.0-dev libva-dev`
 
 3. `git clone https://github.com/leo-lb/ungoogled-chromium ungoogled-chromium-ppc64le && cd ungoogled-chromium-ppc64le && git submodule update --init`
 
@@ -18,7 +18,7 @@ Look for "Download build artifacts" on the latest successful pipeline.
 
 If you're running Fedora 30 or later, instead, you can install the dependencies with
 ```
-sudo dnf install git git python bzip2 tar pkgconfig atk-devel alsa-lib-devel bison binutils brlapi-devel bluez-libs-devel bzip2-devel cairo-devel cups-devel dbus-devel dbus-glib-devel expat-devel fontconfig-devel freetype-devel gcc-c++ glib2-devel glibc gperf gtk3-devel java-1.*.0-openjdk-devel libatomic libcap-devel libffi-devel libgcc libgnome-keyring-devel libjpeg-devel libstdc++ libX11-devel libXScrnSaver-devel libXtst-devel libxkbcommon-x11-devel ncurses-compat-libs nspr-devel nss-devel pam-devel pango-devel pciutils-devel pulseaudio-libs-devel zlib httpd mod_ssl php php-cli python-psutil wdiff xorg-x11-server-Xvfb clang vim cmake pkg-config krb5-devel re2c subversion curl nodejs libuuid-devel ninja-build
+sudo dnf install git git python bzip2 tar pkgconfig atk-devel alsa-lib-devel bison binutils brlapi-devel bluez-libs-devel bzip2-devel cairo-devel cups-devel dbus-devel dbus-glib-devel expat-devel fontconfig-devel freetype-devel gcc-c++ glib2-devel glibc gperf gtk3-devel java-1.*.0-openjdk-devel libatomic libcap-devel libffi-devel libgcc libgnome-keyring-devel libjpeg-devel libstdc++ libX11-devel libXScrnSaver-devel libXtst-devel libxkbcommon-x11-devel ncurses-compat-libs nspr-devel nss-devel pam-devel pango-devel pciutils-devel pulseaudio-libs-devel zlib httpd mod_ssl php php-cli python-psutil wdiff xorg-x11-server-Xvfb clang vim cmake pkg-config krb5-devel re2c subversion curl nodejs libuuid-devel ninja-build libva-devel
 ```
 
 ### /!\ You must remove the build folder before running the build script again.
