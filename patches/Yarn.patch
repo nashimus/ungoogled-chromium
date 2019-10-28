@@ -1,3 +1,17 @@
+diff --git a/src/Yarn/BUILD.gn b/src/Yarn/BUILD.gn
+index 3236f13a4..87c116871 100644
+--- a/third_party/swiftshader/src/Yarn/BUILD.gn
++++ b/third_party/swiftshader/src/Yarn/BUILD.gn
+@@ -55,6 +55,9 @@ swiftshader_source_set("Yarn") {
+       "OSFiber_x86.c",
+       "OSFiber_asm_x86.h",
+       "OSFiber_asm_x86.S",
++      "OSFiber_ppc64.c",
++      "OSFiber_asm_ppc64.h",
++      "OSFiber_asm_ppc64.S",
+     ]
+   }
+ 
 diff --git a/src/OSFiber_asm.h b/src/OSFiber_asm.h
 index 8801460..4441afa 100644
 --- a/third_party/swiftshader/src/Yarn/OSFiber_asm.hpp
