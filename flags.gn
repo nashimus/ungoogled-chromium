@@ -35,5 +35,22 @@ fatal_linker_warnings=false
 is_debug=false
 is_official_build=true
 symbol_level=0
+
+ffmpeg_branding="ChromeOS"
 proprietary_codecs=true
-ffmpeg_branding="Chrome"
+enable_mse_mpeg2ts_stream_parser=true
+enable_av1_decoder=true
+use_openh264=true
+
+use_vaapi=true
+
+is_component_build = false # statically link components
+enable_linux_installer=true
+
+# system integration
+system_libdir="lib64"
+use_gio=true
+use_pulseaudio=true
+icu_use_data_file=true
+
+pdf_enable_xfa=true
