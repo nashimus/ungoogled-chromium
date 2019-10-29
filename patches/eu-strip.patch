@@ -1,0 +1,22 @@
+diff --git a/chrome/installer/linux/BUILD.gn b/chrome/installer/linux/BUILD.gn
+index 6624417999bb..64bdb07aad62 100644
+--- a/chrome/installer/linux/BUILD.gn
++++ b/chrome/installer/linux/BUILD.gn
+@@ -118,7 +118,6 @@ action("strip_chrome_binary") {
+   ]
+   script = "//build/gn_run_binary.py"
+   sources = [
+-    "//buildtools/third_party/eu-strip/bin/eu-strip",
+     prog_name,
+   ]
+   outputs = [
+@@ -204,8 +203,6 @@ copy("common_packaging_files") {
+     ]
+   }
+ 
+-  sources += [ "//buildtools/third_party/eu-strip/bin/eu-strip" ]
+-
+   outputs = [
+     "$root_out_dir/installer/common/{{source_file_part}}",
+   ]
+
