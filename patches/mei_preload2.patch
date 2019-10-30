@@ -1,0 +1,119 @@
+diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
+index 50ecda12dc67..a41462158c46 100644
+--- a/chrome/browser/BUILD.gn
++++ b/chrome/browser/BUILD.gn
+@@ -309,8 +309,6 @@ jumbo_static_library("browser") {
+     "component_updater/crl_set_component_installer.h",
+     "component_updater/file_type_policies_component_installer.cc",
+     "component_updater/file_type_policies_component_installer.h",
+-    "component_updater/mei_preload_component_installer.cc",
+-    "component_updater/mei_preload_component_installer.h",
+     "component_updater/optimization_hints_component_installer.cc",
+     "component_updater/optimization_hints_component_installer.h",
+     "component_updater/origin_trials_component_installer.cc",
+diff --git a/chrome/installer/linux/BUILD.gn b/chrome/installer/linux/BUILD.gn
+index 6624417999bb..c45a13d47458 100644
+--- a/chrome/installer/linux/BUILD.gn
++++ b/chrome/installer/linux/BUILD.gn
+@@ -63,8 +63,6 @@ packaging_files = packaging_files_binaries + [
+                     "$root_out_dir/xdg-mime",
+                     "$root_out_dir/xdg-settings",
+                     "$root_out_dir/locales/en-US.pak",
+-                    "$root_out_dir/MEIPreload/manifest.json",
+-                    "$root_out_dir/MEIPreload/preloaded_data.pb",
+                   ]
+ 
+ action_foreach("calculate_rpm_dependencies") {
+diff --git a/chrome/installer/linux/common/installer.include b/chrome/installer/linux/common/installer.include
+index 9a25d3ec2c1c..ca7e2e81672b 100644
+--- a/chrome/installer/linux/common/installer.include
++++ b/chrome/installer/linux/common/installer.include
+@@ -192,13 +192,6 @@ stage_install_common() {
+     cp -a '{}' "${STAGEDIR}/${INSTALLDIR}/locales/" \;
+   find "${STAGEDIR}/${INSTALLDIR}/locales" -type f -exec chmod 644 '{}' \;
+ 
+-  # MEI Preload
+-  if [ -f "${BUILDDIR}/MEIPreload/manifest.json" ]; then
+-    install -m 755 -d "${STAGEDIR}/${INSTALLDIR}/MEIPreload/"
+-    install -m 644 "${BUILDDIR}/MEIPreload/manifest.json" "${STAGEDIR}/${INSTALLDIR}/MEIPreload/"
+-    install -m 644 "${BUILDDIR}/MEIPreload/preloaded_data.pb" "${STAGEDIR}/${INSTALLDIR}/MEIPreload/"
+-  fi
+-
+   # Widevine CDM.
+   if [ -d "${BUILDDIR}/WidevineCdm" ]; then
+     # No need to strip; libwidevinecdm.so starts out stripped.
+diff --git a/chrome/installer/mini_installer/chrome.release b/chrome/installer/mini_installer/chrome.release
+index 029bf08f5363..fef367925e74 100644
+--- a/chrome/installer/mini_installer/chrome.release
++++ b/chrome/installer/mini_installer/chrome.release
+@@ -66,12 +66,6 @@ SmallLogoDev.png: %(VersionDir)s\VisualElements\
+ swiftshader\libEGL.dll: %(VersionDir)s\swiftshader\
+ swiftshader\libGLESv2.dll: %(VersionDir)s\swiftshader\
+ 
+-#
+-# MEI Preload sub dir
+-#
+-MEIPreload\manifest.json: %(VersionDir)s\MEIPreload\
+-MEIPreload\preloaded_data.pb: %(VersionDir)s\MEIPreload\
+-
+ [HIDPI]
+ chrome_200_percent.pak: %(VersionDir)s\
+ 
+diff --git a/chrome/tools/build/chromeos/FILES.cfg b/chrome/tools/build/chromeos/FILES.cfg
+index 12f15ad0220d..62bf13886294 100644
+--- a/chrome/tools/build/chromeos/FILES.cfg
++++ b/chrome/tools/build/chromeos/FILES.cfg
+@@ -122,13 +122,4 @@ FILES = [
+     'filename': 'nacl_helper_nonsfi',
+     'buildtype': ['dev', 'official'],
+   },
+-  # MEI Preload files:
+-  {
+-    'filename': 'MEIPreload/manifest.json',
+-    'buildtype': ['dev', 'official'],
+-  },
+-  {
+-    'filename': 'MEIPreload/preloaded_data.pb',
+-    'buildtype': ['dev', 'official'],
+-  },
+ ]
+diff --git a/chrome/tools/build/linux/FILES.cfg b/chrome/tools/build/linux/FILES.cfg
+index eb046367e281..bd37c1c75775 100644
+--- a/chrome/tools/build/linux/FILES.cfg
++++ b/chrome/tools/build/linux/FILES.cfg
+@@ -275,15 +275,6 @@ FILES = [
+     'archive': 'content-shell.zip',
+     'optional': ['dev'],
+   },
+-  # MEI Preload files:
+-  {
+-    'filename': 'MEIPreload/manifest.json',
+-    'buildtype': ['dev', 'official'],
+-  },
+-  {
+-    'filename': 'MEIPreload/preloaded_data.pb',
+-    'buildtype': ['dev', 'official'],
+-  },
+   # ChromeDriver binary:
+   {
+     'filename': 'chromedriver',
+diff --git a/chrome/tools/build/win/FILES.cfg b/chrome/tools/build/win/FILES.cfg
+index 66c0f7842be4..178d56660b93 100644
+--- a/chrome/tools/build/win/FILES.cfg
++++ b/chrome/tools/build/win/FILES.cfg
+@@ -819,15 +819,6 @@ FILES = [
+     'archive': 'metrics-metadata.zip',
+     'optional': ['dev', 'official'],
+   },
+-  # MEI Preload files:
+-  {
+-    'filename': 'MEIPreload/manifest.json',
+-    'buildtype': ['dev', 'official'],
+-  },
+-  {
+-    'filename': 'MEIPreload/preloaded_data.pb',
+-    'buildtype': ['dev', 'official'],
+-  },
+   # ChromeDriver binary:
+   {
+     'filename': 'chromedriver.exe',
