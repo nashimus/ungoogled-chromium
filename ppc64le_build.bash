@@ -43,6 +43,7 @@ REVISION=$(grep -Po "(?<=CLANG_REVISION = ')\w+(?=')" src/tools/clang/scripts/up
 
 git clone https://github.com/llvm/llvm-project.git
 git -C llvm-project checkout "${REVISION}"
+git -C llvm-project apply < ../patches/llvm-codegen.patch
 
 mkdir -p llvm_build
 cd llvm_build

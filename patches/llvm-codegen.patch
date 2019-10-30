@@ -1,0 +1,34 @@
+From 7507b39dd7894ea89f30cec259c593ace1d8f01c Mon Sep 17 00:00:00 2001
+From: Colin Samples <colin.samples+git@gmail.com>
+Date: Sun, 20 Oct 2019 12:20:55 -0400
+Subject: [PATCH] [PPC] Add support for lrint and llrint builtins
+
+This commit adds support for use of lrint and llrint builtins on PPC and fixes a
+code generation issue.
+
+r361875 added support for lrint and llrint builtins to LLVM; however, the series
+only added support for AArch64, so on PPC ll/lrint was emitted as a function
+call. On PPC, the hardware loop transform pass assumed that since an intrinsic
+was used, ctr would not be clobbered, and a transformation of the loop to use
+hardware loop intrinsics was valid. The function call clobbered ctr, resulting
+in incorrect code generation.
+---
+ llvm/lib/Target/PowerPC/PPCTargetTransformInfo.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/llvm/lib/Target/PowerPC/PPCTargetTransformInfo.cpp b/llvm/lib/Target/PowerPC/PPCTargetTransformInfo.cpp
+index f51300c656a..81de1fe2f33 100644
+--- a/llvm/lib/Target/PowerPC/PPCTargetTransformInfo.cpp
++++ b/llvm/lib/Target/PowerPC/PPCTargetTransformInfo.cpp
+@@ -331,6 +331,8 @@ bool PPCTTIImpl::mightUseCTR(BasicBlock *BB,
+           case Intrinsic::ceil:               Opcode = ISD::FCEIL;      break;
+           case Intrinsic::trunc:              Opcode = ISD::FTRUNC;     break;
+           case Intrinsic::rint:               Opcode = ISD::FRINT;      break;
++          case Intrinsic::lrint:              Opcode = ISD::LRINT;      break;
++          case Intrinsic::llrint:             Opcode = ISD::LLRINT;     break;
+           case Intrinsic::nearbyint:          Opcode = ISD::FNEARBYINT; break;
+           case Intrinsic::round:              Opcode = ISD::FROUND;     break;
+           case Intrinsic::minnum:             Opcode = ISD::FMINNUM;    break;
+-- 
+2.23.0
+
