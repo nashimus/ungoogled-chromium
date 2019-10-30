@@ -1,16 +1,3 @@
-diff --git a/chrome/browser/BUILD.gn b/chrome/browser/BUILD.gn
-index 50ecda12dc67..a41462158c46 100644
---- a/chrome/browser/BUILD.gn
-+++ b/chrome/browser/BUILD.gn
-@@ -309,8 +309,6 @@ jumbo_static_library("browser") {
-     "component_updater/crl_set_component_installer.h",
-     "component_updater/file_type_policies_component_installer.cc",
-     "component_updater/file_type_policies_component_installer.h",
--    "component_updater/mei_preload_component_installer.cc",
--    "component_updater/mei_preload_component_installer.h",
-     "component_updater/optimization_hints_component_installer.cc",
-     "component_updater/optimization_hints_component_installer.h",
-     "component_updater/origin_trials_component_installer.cc",
 diff --git a/chrome/installer/linux/BUILD.gn b/chrome/installer/linux/BUILD.gn
 index 6624417999bb..c45a13d47458 100644
 --- a/chrome/installer/linux/BUILD.gn

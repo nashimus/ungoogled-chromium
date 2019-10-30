@@ -2,7 +2,6 @@ Yarn.patch
 llvm-bug-workaround.patch
 enable-rpm-build.patch
 enable-vaapi.patch
-mei_preload.patch
 mei_preload2.patch
 eu-strip.patch
 
