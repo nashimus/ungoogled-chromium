@@ -1,6 +1,6 @@
 --- a/chrome/browser/chrome_content_browser_client.cc
 +++ b/chrome/browser/chrome_content_browser_client.cc
-@@ -861,30 +861,6 @@ void SetApplicationLocaleOnIOThread(cons
+@@ -862,30 +862,6 @@ void SetApplicationLocaleOnIOThread(cons
    GetIOThreadApplicationLocale() = locale;
  }
  
@@ -31,7 +31,7 @@
  #if defined(OS_ANDROID)
  float GetDeviceScaleAdjustment() {
    static const float kMinFSM = 1.05f;
-@@ -1263,7 +1239,6 @@ void ChromeContentBrowserClient::PostAft
+@@ -1264,7 +1240,6 @@ void ChromeContentBrowserClient::PostAft
    InitNetworkContextsParentDirectory();
  
    DCHECK_CURRENTLY_ON(BrowserThread::UI);
@@ -39,7 +39,7 @@
  }
  
  bool ChromeContentBrowserClient::IsBrowserStartupComplete() {
-@@ -2121,7 +2096,7 @@ void ChromeContentBrowserClient::AppendE
+@@ -2122,7 +2097,7 @@ void ChromeContentBrowserClient::AppendE
        // Disable client-side phishing detection in the renderer if it is
        // disabled in the Profile preferences or the browser process.
        if (!prefs->GetBoolean(prefs::kSafeBrowsingEnabled) ||
@@ -48,7 +48,7 @@
          command_line->AppendSwitch(
              switches::kDisableClientSidePhishingDetection);
        }
-@@ -4204,7 +4179,7 @@ ChromeContentBrowserClient::CreateThrott
+@@ -4205,7 +4180,7 @@ ChromeContentBrowserClient::CreateThrott
  
    throttles.push_back(std::make_unique<SSLErrorNavigationThrottle>(
        handle,
@@ -57,7 +57,7 @@
        base::Bind(&SSLErrorHandler::HandleSSLError)));
  
    throttles.push_back(std::make_unique<LoginNavigationThrottle>(handle));
-@@ -4237,11 +4212,6 @@ ChromeContentBrowserClient::CreateThrott
+@@ -4238,11 +4213,6 @@ ChromeContentBrowserClient::CreateThrott
        PreviewsLitePageDecider::MaybeCreateThrottleFor(handle);
    if (previews_lite_page_throttle)
      throttles.push_back(std::move(previews_lite_page_throttle));
@@ -1170,3 +1170,62 @@
    return RespondNow(ArgumentList(
        api::safe_browsing_private::GetReferrerChain::Results::Create(
            referrer_entries)));
+--- a/chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.cc
++++ b/chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.cc
+@@ -58,7 +58,6 @@
+ #include "chrome/browser/previews/previews_service.h"
+ #include "chrome/browser/previews/previews_service_factory.h"
+ #include "chrome/browser/profiles/profile.h"
+-#include "chrome/browser/safe_browsing/safe_browsing_service.h"
+ #include "chrome/browser/search_engines/template_url_service_factory.h"
+ #include "chrome/browser/translate/chrome_translate_client.h"
+ #include "chrome/browser/web_data_service_factory.h"
+@@ -662,36 +661,6 @@ void ChromeBrowsingDataRemoverDelegate::
+         CONTENT_SETTINGS_TYPE_CLIENT_HINTS, base::Time(), base::Time::Max(),
+         website_settings_filter);
+ 
+-    // Clear the safebrowsing cookies only if time period is for "all time".  It
+-    // doesn't make sense to apply the time period of deleting in the last X
+-    // hours/days to the safebrowsing cookies since they aren't the result of
+-    // any user action.
+-    if (IsForAllTime()) {
+-      safe_browsing::SafeBrowsingService* sb_service =
+-          g_browser_process->safe_browsing_service();
+-      if (sb_service) {
+-        mojo::Remote<network::mojom::CookieManager> cookie_manager;
+-        sb_service->GetNetworkContext()->GetCookieManager(
+-            cookie_manager.BindNewPipeAndPassReceiver());
+-
+-        network::mojom::CookieManager* manager_ptr = cookie_manager.get();
+-
+-        network::mojom::CookieDeletionFilterPtr deletion_filter =
+-            filter_builder->BuildCookieDeletionFilter();
+-        if (!delete_begin_.is_null())
+-          deletion_filter->created_after_time = delete_begin_;
+-        if (!delete_end_.is_null())
+-          deletion_filter->created_before_time = delete_end_;
+-
+-        manager_ptr->DeleteCookies(
+-            std::move(deletion_filter),
+-            base::BindOnce(
+-                &OnClearedCookies,
+-                CreateTaskCompletionClosure(TracingDataType::kCookies),
+-                std::move(cookie_manager)));
+-      }
+-    }
+-
+     MediaDeviceIDSalt::Reset(profile_->GetPrefs());
+   }
+ 
+--- a/chrome/browser/profiles/profiles_state.cc
++++ b/chrome/browser/profiles/profiles_state.cc
+@@ -215,9 +215,6 @@ void RemoveBrowsingDataForProfile(const
+   // The BrowsingDataRemover relies on many objects that aren't created in unit
+   // tests. Previously this code would depend on content::ResourceDispatcherHost
+   // but that's gone, so do a similar hack for now.
+-  if (!g_browser_process->safe_browsing_service())
+-    return;
+-
+   Profile* profile = g_browser_process->profile_manager()->GetProfileByPath(
+       profile_path);
+   if (!profile)
