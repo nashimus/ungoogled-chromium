@@ -50,7 +50,7 @@ cd llvm_build
 
 LLVM_BUILD_DIR=$(pwd)
 
-cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=clang -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Unix Makefiles" ../llvm-project/llvm
+cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Ninja" ../llvm-project/llvm
 make -j$(nproc)
 
 cd ../
