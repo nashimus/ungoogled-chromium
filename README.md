@@ -1,6 +1,6 @@
 # Prebuilt releases
 
-Get prebuilt releases from Gitlab CI at https://gitlab.com/lle-bout/ungoogled-chromium/pipelines
+Get prebuilt releases from Gitlab CI at https://gitlab.com/chromium-ppc64le/ungoogled-chromium/pipelines
 
 Look for "Download build artifacts" on the latest successful pipeline.
 
