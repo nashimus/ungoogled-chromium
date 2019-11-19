@@ -45,7 +45,7 @@ use_openh264=true
 use_vaapi=true
 
 is_component_build = false # statically link components
-#enable_linux_installer=true
+enable_linux_installer=true
 
 # system integration
 system_libdir="lib64"
