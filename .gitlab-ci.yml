@@ -1,4 +1,4 @@
-image: registry.gitlab.com/lle-bout/ungoogled-chromium-ci-docker-image/ppc64le:latest
+image: registry.gitlab.com/chromium-ppc64le/ungoogled-chromium-ci-docker-image/ppc64le:latest
 
 build:
   variables:
