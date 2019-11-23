@@ -75,8 +75,13 @@ cd ../
 REVISION=$(grep -Po "(?<=CLANG_REVISION = ')\w+(?=')" src/tools/clang/scripts/update.py)
 
 if [ -d "llvm-project" ]; then
-    git -C llvm-project checkout -- .
-    git -C llvm-project fetch
+    cd llvm-project
+    git add -A
+    git status
+    git reset --hard HEAD
+    git fetch
+    git status
+    cd ../
 else
     git clone https://github.com/llvm/llvm-project.git
 fi
