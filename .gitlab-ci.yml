@@ -9,11 +9,14 @@ build:
     - ppc64le
   script:
     - "./ppc64le_build.bash"
-    - "cd build/src/out/Default && tar --exclude=obj -cvjSf ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2 *"
+    - "cd build/src/out/Default && tar --exclude=obj --exclude=gen -cvjSf ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2 *"
   artifacts:
     paths:
       - "build/src/out/Default/ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2"
       - "build/src/out/Default/*.rpm"
   cache:
+    key: primary-cache
     paths:
       - "build/download_cache/*"
+      - "ccache/"
+      - "build/llvm-project/"

@@ -8,6 +8,32 @@ echo "#####################"
 
 set -eux
 
+du -sh ccache/ || echo
+du -sh build/llvm-project/ || echo
+
+env
+
+mkdir -p ccache
+export CCACHE_BASEDIR=${PWD}
+export CCACHE_DIR=${PWD}/ccache
+
+mkdir ccache_bin
+cd ccache_bin
+
+ln -s "$(which ccache)" ccache
+ln -s "${PWD}/ccache" clang
+ln -s "${PWD}/ccache" clang++
+
+NOCCACHE_PATH="${PATH}"
+export PATH="${PWD}:${PATH}"
+
+which clang
+which clang++
+
+ls -lGha
+
+cd ../
+
 mkdir -p build/download_cache
 ./utils/downloads.py retrieve -c build/download_cache -i downloads.ini
 ./utils/downloads.py unpack -c build/download_cache -i downloads.ini -- build/src
@@ -22,9 +48,12 @@ cd build/src
 
 sed -i '/-static-libstdc++/d' tools/gn/build/gen.py
 
+export CC=clang
+export CXX=clang++
+
 mkdir -p out/Default
 ./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j$(nproc) -o out/Default/gn
-PATH="${PWD}/out/Default:${PATH}"
+export PATH="${PWD}/out/Default:${PATH}"
 
 cd third_party/libvpx
 mkdir source/config/linux/ppc64
@@ -37,11 +66,21 @@ cd third_party/ffmpeg
 ./chromium/scripts/copy_config.sh
 cd ../../
 
+unset CC
+unset CXX
+export PATH="${NOCCACHE_PATH}"
+
 cd ../
 
 REVISION=$(grep -Po "(?<=CLANG_REVISION = ')\w+(?=')" src/tools/clang/scripts/update.py)
 
-git clone https://github.com/llvm/llvm-project.git
+if [ -d "llvm-project" ]; then
+    git -C llvm-project checkout -- llvm-project
+    git -C llvm-project fetch
+else
+    git clone https://github.com/llvm/llvm-project.git
+fi
+
 git -C llvm-project checkout "${REVISION}"
 git -C llvm-project apply < ../patches/llvm-codegen.patch
 
@@ -50,7 +89,7 @@ cd llvm_build
 
 LLVM_BUILD_DIR=$(pwd)
 
-cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Ninja" ../llvm-project/llvm
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DLLVM_ENABLE_PROJECTS="clang;lld" -DLLVM_TARGETS_TO_BUILD="PowerPC" -G "Ninja" ../llvm-project/llvm
 ninja -j$(nproc)
 
 cd ../
