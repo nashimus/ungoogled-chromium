@@ -8,6 +8,8 @@ echo "#####################"
 
 set -eux
 
+export CCACHE_MAXSIZE=25G
+
 du -sh ccache/ || echo
 du -sh build/llvm-project/ || echo
 
