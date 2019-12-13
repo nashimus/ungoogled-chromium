@@ -48,7 +48,7 @@ mkdir -p build/download_cache
 
 cd build/src
 
-sed -i '/-static-libstdc++/d' tools/gn/build/gen.py
+sed -i "s/default=False, dest='no_static_libstdcpp'/default=True, dest='no_static_libstdcpp'/" tools/gn/build/gen.py
 
 export CC=clang
 export CXX=clang++
