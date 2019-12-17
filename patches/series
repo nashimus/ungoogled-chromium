@@ -21,6 +21,7 @@ chromium_power/sandbox/0002-sandbox-linux-bpf_dsl-Modify-seccomp_macros-to-add-s
 chromium_power/sandbox/0003-sandbox-linux-system_headers-Update-linux-seccomp-he.patch
 chromium_power/sandbox/0004-sandbox-linux-system_headers-Update-linux-signal-hea.patch
 chromium_power/sandbox/0005-sandbox-linux-seccomp-bpf-Add-ppc64-syscall-stub.patch
+chromium_power/sandbox/0005-sandbox-linux-update-unit-test-for-ppc64.patch
 chromium_power/sandbox/Sandbox-linux-services-credentials.cc-PPC.patch
 chromium_power/third_party/0001-DONTMERGE-third_party-node-Use-system-nodejs-binary.patch
 chromium_power/third_party/0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
