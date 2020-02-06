@@ -671,7 +671,7 @@ def main():
             get_logger().info('(For more error details, re-run with the "-v" flag)')
         parser.exit(status=1)
     else:
-        get_logger().info('Passed validation')
+        get_logger().info('Passed validation (%d patches total)', len(series_iterable))
 
 
 if __name__ == '__main__':
