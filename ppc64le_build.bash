@@ -89,7 +89,6 @@ else
 fi
 
 git -C llvm-project checkout "${REVISION}"
-git -C llvm-project apply < ../patches/llvm-codegen.patch
 
 mkdir -p llvm_build
 cd llvm_build
