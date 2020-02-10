@@ -1,3 +1,4 @@
+gl-bug-workaround.patch
 llvm-bug-workaround.patch
 enable-vaapi.patch
 enable-rpm-build-ungoogled-chromium.patch
