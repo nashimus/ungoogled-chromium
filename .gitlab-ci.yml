@@ -15,8 +15,10 @@ build:
       - "build/src/out/Default/ungoogled-chromium-linux-ppc64le-$CI_COMMIT_SHA.tar.bz2"
       - "build/src/out/Default/*.rpm"
   cache:
-    key: primary-cache
+    key: download-cache
     paths:
       - "build/download_cache/*"
-      - "ccache/"
-      - "build/llvm-project/"
+# cache:
+#    key: binary-cache
+#      - "ccache/"
+#      - "build/llvm-project/"
