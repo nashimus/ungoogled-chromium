@@ -29,14 +29,21 @@ sudo dnf install git python bzip2 tar pkgconfig atk-devel alsa-lib-devel bison b
 
 *A lightweight approach to removing Google web service dependency*
 
-**ungoogled-chromium is Google Chromium**, sans dependency on Google web services. It also features some tweaks to enhance privacy, control, and transparency *(almost all of which require manual activation or enabling)*.
+**Help is welcome!** See the [docs/contributing.md](docs/contributing.md) document for more information.
 
-**ungoogled-chromium retains the default Chromium experience as closely as possible**. Unlike other Chromium forks that have their own visions of a web browser, ungoogled-chromium is essentially a drop-in replacement for Chromium.
+## Objectives
 
-**Help is always welcome!** See the [docs/contributing.md](docs/contributing.md) document for more information.
+In descending order of significance (i.e. most important objective first):
+
+1. **ungoogled-chromium is Google Chromium, sans dependency on Google web services**.
+2. **ungoogled-chromium retains the default Chromium experience as closely as possible**. Unlike other Chromium forks that have their own visions of a web browser, ungoogled-chromium is essentially a drop-in replacement for Chromium.
+3. **ungoogled-chromium features tweaks to enhance privacy, control, and transparency**. However, almost all of these features must be manually activated or enabled. For more details, see [Feature Overview](#feature-overview).
+
+In scenarios where the objectives conflict, the objective of higher significance should take precedence.
 
 ## Content Overview
 
+* [Objectives](#objectives)
 * [Motivation and Philosophy](#motivation-and-philosophy)
 * [Feature Overview](#feature-overview)
 * [**Downloads**](#downloads)
@@ -51,7 +58,7 @@ sudo dnf install git python bzip2 tar pkgconfig atk-devel alsa-lib-devel bison b
 
 ## Motivation and Philosophy
 
-Without signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of inner operations.
+Without signing in to a Google Account, Chromium does pretty well in terms of security and privacy. However, Chromium still has some dependency on Google web services and binaries. In addition, Google designed Chromium to be easy and intuitive for users, which means they compromise on transparency and control of internal operations.
 
 ungoogled-chromium addresses these issues in the following ways:
 
@@ -130,7 +137,7 @@ Also, ungoogled-chromium is available in several **software repositories**:
 * Fedora: Available in [RPM Fusion](https://rpmfusion.org) as `chromium-browser-privacy`.
 * GNU Guix: Available as `ungoogled-chromium`.
 * Gentoo Linux: [`::pf4public`](https://github.com/PF4Public/gentoo-overlay) overlay maintains an *unofficial*  [`ungoogled-chromium`](https://github.com/PF4Public/gentoo-overlay/tree/master/www-client/ungoogled-chromium) ebuild
-* Ubuntu: [PPA (maintained by @ryu0)](https://launchpad.net/~braewoods/+archive/ubuntu/ungoogled-chromium)
+* Ubuntu: [PPA](https://launchpad.net/~braewoods/+archive/ubuntu/ungoogled-chromium) (maintained by [@braewoods](https://github.com/braewoods))
 * macOS cask: Available as `eloston-chromium`. Install (via [Homebrew](https://brew.sh/)) by running: `brew cask fetch eloston-chromium` and then `brew cask install eloston-chromium`
 
 ## Source Code
