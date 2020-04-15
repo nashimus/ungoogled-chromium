@@ -87,6 +87,6 @@
          "type": "linux"
        },
 +      "vendor_id": "0x10de",
-       "features": [
-         "accelerated_video_decode"
-       ]
+       "exceptions": [
+         {
+           "machine_model_name": ["Chromecast"]
