@@ -38,7 +38,6 @@ chromium_power/webrtc/Modules-desktop_capture-differ_block.cc-PPC.patch
 chromium_power/webrtc/Rtc_base-system-arch.h-PPC.patch
 chromium_power/workarounds/HACK-third_party-libvpx-use-generic-gnu.patch
 
-core/inox-patchset/chromium-exclude_unwind_tables.patch
 core/inox-patchset/0001-fix-building-without-safebrowsing.patch
 core/inox-patchset/0003-disable-autofill-download-manager.patch
 core/inox-patchset/0005-disable-default-extensions.patch
