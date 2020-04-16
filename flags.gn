@@ -44,7 +44,8 @@ enable_mse_mpeg2ts_stream_parser=true
 enable_av1_decoder=true
 use_openh264=true
 
-use_vaapi=true
+#use_vaapi=true
+use_vaapi=false #  broken according to chromium repo in this group
 
 is_component_build = false # statically link components
 enable_linux_installer=true
