@@ -17,7 +17,7 @@ build:
   cache:
     key: download-cache
     paths:
-      - "build/download_cache/*"
+      - "build/download_cache/"
 # cache:
 #    key: binary-cache
 #      - "ccache/"
