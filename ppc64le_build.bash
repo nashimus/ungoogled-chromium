@@ -34,7 +34,7 @@ which clang++
 
 ls -lGha
 
-cd ../
+#cd ../
 
 mkdir -p build/download_cache
 ./utils/downloads.py retrieve -c build/download_cache -i downloads.ini
