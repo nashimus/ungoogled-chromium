@@ -70,7 +70,7 @@ cd ../../
 
 unset CC
 unset CXX
-export PATH="${NOCCACHE_PATH}"
+#export PATH="${NOCCACHE_PATH}"
 
 cd ../
 
