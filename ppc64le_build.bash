@@ -8,26 +8,26 @@ echo "#####################"
 
 set -eux
 
-export CCACHE_MAXSIZE=25G
+#export CCACHE_MAXSIZE=25G
 
-du -sh ccache/ || echo
-du -sh build/llvm-project/ || echo
+#du -sh ccache/ || echo
+#du -sh build/llvm-project/ || echo
 
 env
 
-mkdir -p ccache
-export CCACHE_BASEDIR=${PWD}
-export CCACHE_DIR=${PWD}/ccache
+#mkdir -p ccache
+#export CCACHE_BASEDIR=${PWD}
+#export CCACHE_DIR=${PWD}/ccache
 
-mkdir ccache_bin
-cd ccache_bin
+#mkdir ccache_bin
+#cd ccache_bin
 
-ln -s "$(which ccache)" ccache
-ln -s "${PWD}/ccache" clang
-ln -s "${PWD}/ccache" clang++
+#ln -s "$(which ccache)" ccache
+#ln -s "${PWD}/ccache" clang
+#ln -s "${PWD}/ccache" clang++
 
-NOCCACHE_PATH="${PATH}"
-export PATH="${PWD}:${PATH}"
+#NOCCACHE_PATH="${PATH}"
+#export PATH="${PWD}:${PATH}"
 
 which clang
 which clang++

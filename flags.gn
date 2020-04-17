@@ -36,7 +36,7 @@ fatal_linker_warnings=false
 is_debug=false
 is_official_build=true
 symbol_level=0
-cc_wrapper="/usr/bin/ccache"
+#cc_wrapper="/usr/bin/ccache"
 
 ffmpeg_branding="ChromeOS"
 proprietary_codecs=true
