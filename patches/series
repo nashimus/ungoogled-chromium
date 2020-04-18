@@ -4,7 +4,7 @@ llvm-bug-workaround.patch
 enable-rpm-build-ungoogled-chromium.patch
 enable-rpm-build.patch
 change-user-agent.patch
-skia-vsx-instructions.patch
+#skia-vsx-instructions.patch
 Revert-Vulkan-Disable-global-merge-for-volk.patch
 
 chromium_power/breakpad/0001-Implement-ppc64-support-on-linux.patch
