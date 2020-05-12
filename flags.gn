@@ -16,7 +16,6 @@ fieldtrial_testing_like_official_build=true
 google_api_key=""
 google_default_client_id=""
 google_default_client_secret=""
-optimize_webui=false
 safe_browsing_mode=0
 treat_warnings_as_errors=false
 use_official_google_api_keys=false
@@ -37,7 +36,7 @@ fatal_linker_warnings=false
 is_debug=false
 is_official_build=true
 symbol_level=0
-cc_wrapper="/usr/bin/ccache"
+#cc_wrapper="/usr/bin/ccache"
 
 ffmpeg_branding="ChromeOS"
 proprietary_codecs=true
@@ -45,7 +44,8 @@ enable_mse_mpeg2ts_stream_parser=true
 enable_av1_decoder=true
 use_openh264=true
 
-use_vaapi=true
+#use_vaapi=true
+use_vaapi=false #  broken according to chromium repo in this group
 
 is_component_build = false # statically link components
 enable_linux_installer=true
